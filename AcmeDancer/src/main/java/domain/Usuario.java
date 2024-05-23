@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Version;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -25,6 +26,7 @@ public abstract class Usuario {
 
 	// Identification ---------------------------------------------------------
 	private int		id;
+	private int		version;
 	private String	nombre;
 	private String	apellidos;
 	private String	direccion;
@@ -41,6 +43,14 @@ public abstract class Usuario {
 
 	public void setId(final int id) {
 		this.id = id;
+	}
+	@Version
+	public int getVersion() {
+		return this.version;
+	}
+
+	public void setVersion(final int version) {
+		this.version = version;
 	}
 	@NotBlank
 	public String getNombre() {
@@ -119,6 +129,8 @@ public abstract class Usuario {
 		result.append("{");
 		result.append("id=");
 		result.append(this.getId());
+		result.append(", version:");
+		result.append(this.getVersion());
 		result.append(", nombre:");
 		result.append(this.getNombre());
 		result.append(", apellidos:");
