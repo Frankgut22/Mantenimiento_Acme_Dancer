@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -54,28 +56,28 @@ public class Tarjetas {
 	public void setNombreTitular(final String nombreTitular) {
 		this.nombreTitular = nombreTitular;
 	}
-	@NotBlank
+	@CreditCardNumber
 	public int getNumeroTarjeta() {
 		return this.numeroTarjeta;
 	}
 	public void setNumeroTarjeta(final int numeroTarjeta) {
 		this.numeroTarjeta = numeroTarjeta;
 	}
-	@NotBlank
+	@Range(min = 1, max = 12)
 	public int getMes() {
 		return this.mes;
 	}
 	public void setMes(final int mes) {
 		this.mes = mes;
 	}
-	@NotBlank
+	@Range(min = 2023, max = 2035)
 	public int getAnio() {
 		return this.anio;
 	}
 	public void setAnio(final int anio) {
 		this.anio = anio;
 	}
-	@NotBlank
+	@CreditCardNumber
 	public int getCvv() {
 		return this.cvv;
 	}

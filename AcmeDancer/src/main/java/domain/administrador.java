@@ -4,13 +4,18 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Version;
 
 @Entity
 @Access(AccessType.PROPERTY)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class administrador extends Usuario {
+public class administrador {
+	//He quitado el extens usuario en administrador, hay que ver como solucioanr eso
 
 	// Constructors -----------------------------------------------------------
 	public administrador() {
@@ -18,6 +23,28 @@ public class administrador extends Usuario {
 	}
 	// Identification ---------------------------------------------------------
 
+
+	private int	id;
+	private int	version;
+
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(final int id) {
+		this.id = id;
+	}
+	@Version
+	public int getVersion() {
+		return this.version;
+	}
+
+	public void setVersion(final int version) {
+		this.version = version;
+	}
 	// Object interface -------------------------------------------------------
 
 	@Override
