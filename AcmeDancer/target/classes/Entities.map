@@ -1,5 +1,10 @@
 #./src/main/resources/Entities.map
-#Fri May 24 10:42:39 CEST 2024
-userAccount3=6
-userAccount2=5
-userAccount1=4
+#Sat May 25 19:06:41 CEST 2024
+domain.Academia\#0=13
+userAccount3=11
+userAccount2=10
+userAccount1=9
+domain.Estilo\#1=16
+domain.Alumno\#0=14
+domain.Administrador\#0=12
+domain.Estilo\#0=15

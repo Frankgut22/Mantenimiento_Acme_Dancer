@@ -6,13 +6,12 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Estilo {
+public class Estilo extends DomainEntity {
 
 	// Constructors -----------------------------------------------------------
 	public Estilo() {
@@ -22,21 +21,14 @@ public class Estilo {
 
 	// Identification ---------------------------------------------------------
 
-	private int		id;
 	private String	nombre;
 	private String	descripcion;
 	private String	imagen;
 	private String	video;
 
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	public int getId() {
-		return this.id;
-	}
-	public void setId(final int id) {
-		this.id = id;
-	}
+
 	@NotBlank
 	public String getNombre() {
 		return this.nombre;

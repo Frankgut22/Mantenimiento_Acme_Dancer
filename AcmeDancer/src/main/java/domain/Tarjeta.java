@@ -6,7 +6,6 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
@@ -14,41 +13,26 @@ import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Tarjetas {
+public class Tarjeta extends DomainEntity {
 
 	// Constructors -----------------------------------------------------------
-	public Tarjetas() {
+	public Tarjeta() {
 		super();
 	}
 
 
 	// Identification ---------------------------------------------------------
 
-	private int		id;
-	private String	nombreAlumno;
 	private String	nombreTitular;
 	private int		numeroTarjeta;
+	//tipo de tarjeta
 	private int		mes;
 	private int		anio;
 	private int		cvv;
 
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	public int getId() {
-		return this.id;
-	}
 
-	public void setId(final int id) {
-		this.id = id;
-	}
-	@NotBlank
-	public String getNombreAlumno() {
-		return this.nombreAlumno;
-	}
-	public void setNombreAlumno(final String nombreAlumno) {
-		this.nombreAlumno = nombreAlumno;
-	}
 	@NotBlank
 	public String getNombreTitular() {
 		return this.nombreTitular;
@@ -118,8 +102,6 @@ public class Tarjetas {
 		result.append("{");
 		result.append("id=");
 		result.append(this.getId());
-		result.append(", nombreAlumno:");
-		result.append(this.getNombreAlumno());
 		result.append(", nombreTitular:");
 		result.append(this.getNombreTitular());
 		result.append(", numeroTarjeta:");

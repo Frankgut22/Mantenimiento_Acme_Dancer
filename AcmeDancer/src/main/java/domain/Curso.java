@@ -1,22 +1,19 @@
 
 package domain;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Version;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Curso {
+public class Curso extends DomainEntity {
 	// Constructors -----------------------------------------------------------
 
 	public Curso() {
@@ -26,13 +23,11 @@ public class Curso {
 
 	// Identification ---------------------------------------------------------
 
-	private int		id;
-	private int		version;
 	private String	titulo;
 	private Date	fecha_Inicio;
 	private Date	fecha_fin;
 	private String	diaSemana;
-	private Time	horaEjecucion;
+	private String	horaEjecucion;
 	private int		capacidad;
 	/*
 	 * FALTA POR HACER
@@ -41,24 +36,8 @@ public class Curso {
 	 */
 
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	public int getId() {
-		return this.id;
-	}
 
-	public void setId(final int id) {
-		this.id = id;
-	}
-
-	@Version
-	public int getVersion() {
-		return this.version;
-	}
-
-	public void setVersion(final int version) {
-		this.version = version;
-	}
 	@NotBlank
 	public String getTitulo() {
 		return this.titulo;
@@ -66,7 +45,7 @@ public class Curso {
 	public void setTitulo(final String titulo) {
 		this.titulo = titulo;
 	}
-	@NotBlank
+	@NotBlank //poner rango
 	public Date getFecha_Inicio() {
 		return this.fecha_Inicio;
 	}
@@ -88,10 +67,10 @@ public class Curso {
 		this.diaSemana = diaSemana;
 	}
 	@NotBlank
-	public Time getHoraEjecucion() {
+	public String getHoraEjecucion() {
 		return this.horaEjecucion;
 	}
-	public void setHoraEjecucion(final Time horaEjecucion) {
+	public void setHoraEjecucion(final String horaEjecucion) {
 		this.horaEjecucion = horaEjecucion;
 	}
 	@NotBlank

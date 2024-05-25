@@ -8,13 +8,12 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Solicitud_curso {
+public class Solicitud_curso extends DomainEntity {
 
 	// Constructors -----------------------------------------------------------
 	public Solicitud_curso() {
@@ -24,7 +23,6 @@ public class Solicitud_curso {
 
 	// Identification ---------------------------------------------------------
 
-	private int		id;
 	private String	nombre;
 	private Date	fecha_inicio;
 	private Date	fecha_fin;
@@ -32,14 +30,8 @@ public class Solicitud_curso {
 	//private Estilo	estilo;
 
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	public int getId() {
-		return this.id;
-	}
-	public void setId(final int id) {
-		this.id = id;
-	}
+
 	@NotBlank
 	public String getNombre() {
 		return this.nombre;

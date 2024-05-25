@@ -6,17 +6,15 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Version;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Academia {
+public class Academia extends Usuario {
 
 	// Constructors -----------------------------------------------------------
 
@@ -27,29 +25,10 @@ public class Academia {
 
 	// Identification ---------------------------------------------------------
 
-	private int		id;
-	private int		version;
-	private String	nombreComercial;
+	private String nombreComercial;
 
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(final int id) {
-		this.id = id;
-	}
-
-	@Version
-	public int getVersion() {
-		return this.version;
-	}
-
-	public void setVersion(final int version) {
-		this.version = version;
-	}
 
 	@NotBlank
 	public String getNombreComercial() {
@@ -78,7 +57,6 @@ public class Academia {
 			result = false;
 		else
 			result = (this.getId() == ((DomainEntity) other).getId());
-
 		return result;
 	}
 
@@ -91,8 +69,6 @@ public class Academia {
 		result.append("{");
 		result.append("id=");
 		result.append(this.getId());
-		result.append(", version=");
-		result.append(this.getVersion());
 		result.append(", Nombre de la academia=");
 		result.append(this.getNombreComercial());
 		result.append("}");

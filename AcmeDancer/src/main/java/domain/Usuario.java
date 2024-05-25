@@ -6,7 +6,6 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
@@ -16,7 +15,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Access(AccessType.PROPERTY)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Usuario {
+public abstract class Usuario extends DomainEntity {
 	// Constructors -----------------------------------------------------------
 
 	public Usuario() {
@@ -25,24 +24,15 @@ public abstract class Usuario {
 
 
 	// Identification ---------------------------------------------------------
-	private int		id;
 	private String	nombre;
 	private String	apellidos;
 	private String	direccion;
-	private int		codigoPostal;
+	private String	codigoPostal;
 	private String	telefono;
 	private String	email;
 
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(final int id) {
-		this.id = id;
-	}
 	@NotBlank
 	public String getNombre() {
 		return this.nombre;
@@ -65,10 +55,10 @@ public abstract class Usuario {
 		this.direccion = direccion;
 	}
 	@NotBlank
-	public int getCodigoPostal() {
+	public String getCodigoPostal() {
 		return this.codigoPostal;
 	}
-	public void setCodigoPostal(final int codigoPostal) {
+	public void setCodigoPostal(final String codigoPostal) {
 		this.codigoPostal = codigoPostal;
 	}
 	@NotBlank

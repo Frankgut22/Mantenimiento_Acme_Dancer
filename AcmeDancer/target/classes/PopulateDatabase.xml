@@ -1,26 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
- * PopulateDatabase.xml
- *
- * Copyright (C) 2018 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- -->
+<!-- * PopulateDatabase.xml * * Copyright (C) 2018 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
-	
+
 	<!-- User accounts -->
 
 	<bean id="userAccount1" class="security.UserAccount">
 		<property name="username" value="admin" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password"
+			value="21232f297a57a5a743894a0e4a801fc3" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -32,7 +27,8 @@
 
 	<bean id="userAccount2" class="security.UserAccount">
 		<property name="username" value="customer" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
+		<property name="password"
+			value="91ec1f9324753048c0096d036a694f86" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -44,7 +40,8 @@
 
 	<bean id="userAccount3" class="security.UserAccount">
 		<property name="username" value="super" />
-		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
+		<property name="password"
+			value="1b3231655cebb7a1f783eddf27d254ca" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -56,7 +53,80 @@
 			</list>
 		</property>
 	</bean>
+
+	<!-- Other domain beans come here -->
+
+
+
+	<!-- <bean id="86" class="domain.Tarjeta"> <property name="nombreTitular" 
+		value="Perez" /> <property name="numeroTarjeta" value="654616168" /> <property 
+		name="mes" value="10" /> <property name="anio" value="2024" /> <property 
+		name="cvv" value="65" /> </bean> -->
+	<!-- <bean id="82" class="domain.Usuario"> <property name="nombre" value="Pepe" 
+		/> <property name="apellido" value="Perez" /> <property name="direccion" 
+		value="calle nueva 1" /> <property name="codigoPostal" value="14594" /> <property 
+		name="telefono" value="68415358" /> <property name="email" value="pepe.test@uhu.es" 
+		/> </bean> -->
+	<!-- Administrador -->
+	<bean class="domain.Administrador">
+		<property name="nombre" value="Admin1" />
+		<property name="apellidos" value="Perez" />
+		<property name="direccion" value="calle nueva 1" />
+		<property name="codigoPostal" value="14594" />
+		<property name="telefono" value="68415358" />
+		<property name="email" value="pepe.test@uhu.es" />
+
+	</bean>
+
+	<!-- Academia -->
+	<bean class="domain.Academia">
+		<property name="nombre" value="Academia1" />
+		<property name="nombreComercial" value="Academia1" />
+		<property name="apellidos" value="Perez" />
+		<property name="direccion" value="calle nueva 1" />
+		<property name="codigoPostal" value="14594" />
+		<property name="telefono" value="68415358" />
+		<property name="email" value="pepe.test@uhu.es" />
+
+	</bean>
+
+	<!-- Alumno -->
+	<bean class="domain.Alumno">
+		<property name="nombre" value="Alumno1" />
+		<property name="apellidos" value="Perez" />
+		<property name="direccion" value="calle nueva 1" />
+		<property name="codigoPostal" value="14594" />
+		<property name="telefono" value="68415358" />
+		<property name="email" value="pepe.test@uhu.es" />
+
+	</bean>
+
 	
-	<!-- Other domain beans come here -->	
-	
+	<!-- Solicitud_curso -->
+	<bean class="domain.Solicitud_curso">
+		<property name="nombre" value="Solicitud1" />
+		<property name="fecha_inicio" value="2001/01/01" />
+		<property name="fecha_fin" value="2001/02/04" />
+		<property name="descripcion" value="Descrip" />
+
+
+	</bean>
+
+
+	<!-- Estilos -->
+	<bean class="domain.Estilo">
+		<property name="nombre" value="Estilo2" />
+		<property name="descripcion" value="Test descrip" />
+		<property name="imagen" value="imagen" />
+		<property name="video" value="video" />
+	</bean>
+	<bean class="domain.Estilo">
+		<property name="nombre" value="Estilo3" />
+		<property name="descripcion" value="Test descrip" />
+		<property name="imagen" value="imagen" />
+		<property name="video" value="video" />
+	</bean>
+
+	<!-- -->
+
 </beans>

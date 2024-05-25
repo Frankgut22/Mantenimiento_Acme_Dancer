@@ -6,13 +6,15 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Tutorial {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Tutorial extends DomainEntity {
 
 	// Constructors -----------------------------------------------------------
 
@@ -23,21 +25,13 @@ public class Tutorial {
 
 	// Identification ---------------------------------------------------------
 
-	private int		id;
 	private String	titulo;
 	private String	descripcion;
 	private String	video;
 
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	public int getId() {
-		return this.id;
-	}
 
-	public void setId(final int id) {
-		this.id = id;
-	}
 	@NotBlank
 	public String getTitulo() {
 		return this.titulo;
