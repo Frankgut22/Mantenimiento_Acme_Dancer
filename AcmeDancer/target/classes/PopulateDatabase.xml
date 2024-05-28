@@ -56,17 +56,16 @@
 
 	<!-- Other domain beans come here -->
 
+	<bean id="tarjetaVisa" class="domain.Tarjeta"> 
+		<property name="nombreTitular" 	value="Perez" /> 
+		<property name="numeroTarjeta" value="654616168" /> 
+		<property name="tipoTarjeta" value="Visa" />
+		<property name="mes" value="10" /> 
+		<property name="anio" value="2024" /> 
+		<property name="cvv" value="65" /> 
+	</bean>
 
 
-	<!-- <bean id="86" class="domain.Tarjeta"> <property name="nombreTitular" 
-		value="Perez" /> <property name="numeroTarjeta" value="654616168" /> <property 
-		name="mes" value="10" /> <property name="anio" value="2024" /> <property 
-		name="cvv" value="65" /> </bean> -->
-	<!-- <bean id="82" class="domain.Usuario"> <property name="nombre" value="Pepe" 
-		/> <property name="apellido" value="Perez" /> <property name="direccion" 
-		value="calle nueva 1" /> <property name="codigoPostal" value="14594" /> <property 
-		name="telefono" value="68415358" /> <property name="email" value="pepe.test@uhu.es" 
-		/> </bean> -->
 	<!-- Administrador -->
 	<bean class="domain.Administrador">
 		<property name="nombre" value="Admin1" />
@@ -75,7 +74,6 @@
 		<property name="codigoPostal" value="14594" />
 		<property name="telefono" value="68415358" />
 		<property name="email" value="pepe.test@uhu.es" />
-
 	</bean>
 
 	<!-- Academia -->
@@ -87,7 +85,6 @@
 		<property name="codigoPostal" value="14594" />
 		<property name="telefono" value="68415358" />
 		<property name="email" value="pepe.test@uhu.es" />
-
 	</bean>
 
 	<!-- Alumno -->
@@ -98,20 +95,17 @@
 		<property name="codigoPostal" value="14594" />
 		<property name="telefono" value="68415358" />
 		<property name="email" value="pepe.test@uhu.es" />
-
 	</bean>
 
-	
-	<!-- Solicitud_curso -->
-	<bean class="domain.Solicitud_curso">
-		<property name="nombre" value="Solicitud1" />
-		<property name="fecha_inicio" value="2001/01/01" />
-		<property name="fecha_fin" value="2001/02/04" />
-		<property name="descripcion" value="Descrip" />
-
-
+<!-- Curso -->
+	<bean class="domain.Curso">
+		<property name="titulo" value="Bachata" />
+		<property name="fecha_Inicio" value="02/10/2024" />
+		<property name="fecha_fin" value="02/12/2024" />
+		<property name="diaSemana" value="Lunes" />
+		<property name="horaEjecucion" value="02/12/2024 12:30" />
+		<property name="capacidad" value="20" />
 	</bean>
-
 
 	<!-- Estilos -->
 	<bean class="domain.Estilo">
@@ -126,7 +120,27 @@
 		<property name="imagen" value="imagen" />
 		<property name="video" value="video" />
 	</bean>
+	
+			<!-- Solicitud_curso -->
+	<bean class="domain.Solicitud_curso">
+		<property name="nombre" value="Solicitud1" />
+		<property name="fecha_inicio" value="01/01/2023" />
+		<property name="fecha_fin" value="02/04/2025" />
+		<property name="descripcion" value="Descrip" />
+	</bean>
 
-	<!-- -->
+	<bean class="domain.Tarjeta">
+		<property name="nombreTitular" value="Lucas" />
+		<property name="numeroTarjeta" value="1234657" />
+		<property name="tipoTarjeta" value="Visa" />
+		<property name="mes" value="08" />
+		<property name="anio" value="2025" />
+		<property name="cvv" value="123" />
+	</bean>
 
+	<bean id="tuto" class="domain.Tutorial">
+		<property name="descripcion" value="Bachata" />
+		<property name="titulo" value="aprender bachada" />	
+		<property name="video" value="url" />
+	</bean>
 </beans>

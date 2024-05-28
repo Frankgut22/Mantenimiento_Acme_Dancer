@@ -11,7 +11,6 @@ import javax.persistence.InheritanceType;
 @Access(AccessType.PROPERTY)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Administrador extends Usuario {
-	//He quitado el extens usuario en administrador, hay que ver como solucioanr eso
 
 	// Constructors -----------------------------------------------------------
 	public Administrador() {

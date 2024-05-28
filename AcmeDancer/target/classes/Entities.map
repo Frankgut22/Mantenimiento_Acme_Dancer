@@ -1,10 +1,15 @@
 #./src/main/resources/Entities.map
-#Sat May 25 19:06:41 CEST 2024
-domain.Academia\#0=13
-userAccount3=11
-userAccount2=10
-userAccount1=9
-domain.Estilo\#1=16
-domain.Alumno\#0=14
-domain.Administrador\#0=12
-domain.Estilo\#0=15
+#Tue May 28 19:43:51 CEST 2024
+domain.Tarjeta\#0=25
+domain.Alumno\#0=20
+domain.Curso\#0=21
+domain.Administrador\#0=18
+domain.Solicitud_curso\#0=24
+domain.Estilo\#1=23
+domain.Estilo\#0=22
+domain.Academia\#0=19
+userAccount3=16
+userAccount2=15
+userAccount1=14
+tarjetaVisa=17
+tuto=26

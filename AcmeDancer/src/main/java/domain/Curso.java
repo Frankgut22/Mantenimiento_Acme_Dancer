@@ -8,8 +8,10 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -45,14 +47,14 @@ public class Curso extends DomainEntity {
 	public void setTitulo(final String titulo) {
 		this.titulo = titulo;
 	}
-	@NotBlank //poner rango
+	@DateTimeFormat(pattern = "dd/MM/YYYY")
 	public Date getFecha_Inicio() {
 		return this.fecha_Inicio;
 	}
 	public void setFecha_Inicio(final Date fecha_Inicio) {
 		this.fecha_Inicio = fecha_Inicio;
 	}
-	@NotBlank
+	@DateTimeFormat(pattern = "dd/MM/YYYY")
 	public Date getFecha_fin() {
 		return this.fecha_fin;
 	}
@@ -66,14 +68,14 @@ public class Curso extends DomainEntity {
 	public void setDiaSemana(final String diaSemana) {
 		this.diaSemana = diaSemana;
 	}
-	@NotBlank
+	@DateTimeFormat(pattern = "dd/MM/YYYY HH:mm")
 	public String getHoraEjecucion() {
 		return this.horaEjecucion;
 	}
 	public void setHoraEjecucion(final String horaEjecucion) {
 		this.horaEjecucion = horaEjecucion;
 	}
-	@NotBlank
+	@Min(1)
 	public int getCapacidad() {
 		return this.capacidad;
 	}
@@ -81,56 +83,5 @@ public class Curso extends DomainEntity {
 		this.capacidad = capacidad;
 	}
 	// Object interface -------------------------------------------------------
-
-	@Override
-	public int hashCode() {
-		return this.getId();
-	}
-
-	@Override
-	public boolean equals(final Object other) {
-		boolean result;
-
-		if (this == other)
-			result = true;
-		else if (other == null)
-			result = false;
-		else if (other instanceof Integer)
-			result = (this.getId() == (Integer) other);
-		else if (!this.getClass().isInstance(other))
-			result = false;
-		else
-			result = (this.getId() == ((DomainEntity) other).getId());
-
-		return result;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder result;
-
-		result = new StringBuilder();
-		result.append(this.getClass().getName());
-		result.append("{");
-		result.append("id=");
-		result.append(this.getId());
-		result.append(", version=");
-		result.append(this.getVersion());
-		result.append(", titulo:");
-		result.append(this.getTitulo());
-		result.append(", fecha_Inicio:");
-		result.append(this.getFecha_Inicio());
-		result.append(", fecha_Fin:");
-		result.append(this.getFecha_fin());
-		result.append(", diaSemana:");
-		result.append(this.getDiaSemana());
-		result.append(", horaEjecucion:");
-		result.append(this.getHoraEjecucion());
-		result.append(", capacidad:");
-		result.append(this.getCapacidad());
-		result.append("}");
-
-		return result.toString();
-	}
 
 }

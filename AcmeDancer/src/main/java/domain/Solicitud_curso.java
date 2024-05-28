@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -39,14 +40,14 @@ public class Solicitud_curso extends DomainEntity {
 	public void setNombre(final String nombre) {
 		this.nombre = nombre;
 	}
-	@NotBlank
+	@DateTimeFormat(pattern = "dd/MM/YYYY")
 	public Date getFecha_inicio() {
 		return this.fecha_inicio;
 	}
 	public void setFecha_inicio(final Date fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
-	@NotBlank
+	@DateTimeFormat(pattern = "dd/MM/YYYY")
 	public Date getFecha_fin() {
 		return this.fecha_fin;
 	}
@@ -71,51 +72,4 @@ public class Solicitud_curso extends DomainEntity {
 	 */
 	// Object interface -------------------------------------------------------
 
-	@Override
-	public int hashCode() {
-		return this.getId();
-	}
-
-	@Override
-	public boolean equals(final Object other) {
-		boolean result;
-
-		if (this == other)
-			result = true;
-		else if (other == null)
-			result = false;
-		else if (other instanceof Integer)
-			result = (this.getId() == (Integer) other);
-		else if (!this.getClass().isInstance(other))
-			result = false;
-		else
-			result = (this.getId() == ((DomainEntity) other).getId());
-
-		return result;
-	}
-	@Override
-	public String toString() {
-		StringBuilder result;
-
-		result = new StringBuilder();
-		result.append(this.getClass().getName());
-		result.append("{");
-		result.append("id=");
-		result.append(this.getId());
-		result.append(", nombre:");
-		result.append(this.getNombre());
-		result.append(", fecha_inicio:");
-		result.append(this.getFecha_inicio());
-		result.append(", fecha_fin:");
-		result.append(this.getFecha_fin());
-		result.append(", descripcion:");
-		result.append(this.getDescripcion());
-		/*
-		 * result.append(", estilo:");
-		 * result.append(this.getEstilo());
-		 */
-		result.append("}");
-
-		return result.toString();
-	}
 }
