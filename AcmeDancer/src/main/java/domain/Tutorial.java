@@ -3,11 +3,13 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -29,8 +31,6 @@ public class Tutorial extends DomainEntity {
 	private String	descripcion;
 	private String	video;
 
-
-	@GeneratedValue(strategy = GenerationType.TABLE)
 
 	@NotBlank
 	public String getTitulo() {
@@ -54,47 +54,19 @@ public class Tutorial extends DomainEntity {
 		this.video = video;
 	}
 
+
 	// Object interface -------------------------------------------------------
 
-	@Override
-	public int hashCode() {
-		return this.getId();
+	private Academia nombreComercial;
+
+
+	@NotNull
+	@Valid
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	public Academia getNombreComercial() {
+		return this.nombreComercial;
 	}
-
-	@Override
-	public boolean equals(final Object other) {
-		boolean result;
-
-		if (this == other)
-			result = true;
-		else if (other == null)
-			result = false;
-		else if (other instanceof Integer)
-			result = (this.getId() == (Integer) other);
-		else if (!this.getClass().isInstance(other))
-			result = false;
-		else
-			result = (this.getId() == ((DomainEntity) other).getId());
-
-		return result;
-	}
-	@Override
-	public String toString() {
-		StringBuilder result;
-
-		result = new StringBuilder();
-		result.append(this.getClass().getName());
-		result.append("{");
-		result.append("id=");
-		result.append(this.getId());
-		result.append(", titulo:");
-		result.append(this.getTitulo());
-		result.append(", descripcion:");
-		result.append(this.getDescripcion());
-		result.append(", video:");
-		result.append(this.getVideo());
-		result.append("}");
-
-		return result.toString();
+	public void setNombreComercial(final Academia nombreComercial) {
+		this.nombreComercial = nombreComercial;
 	}
 }

@@ -2,13 +2,19 @@
 package domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -33,7 +39,7 @@ public class Curso extends DomainEntity {
 	private int		capacidad;
 	/*
 	 * FALTA POR HACER
-	 * private Estilo estilo;
+	 *
 	 * private TNivel nivel;
 	 */
 
@@ -83,5 +89,33 @@ public class Curso extends DomainEntity {
 		this.capacidad = capacidad;
 	}
 	// Object interface -------------------------------------------------------
+
+
+	private List<Estilo> estilos;
+
+
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy = "titulo", cascade = CascadeType.ALL)
+	public List<Estilo> getEstilos() {
+		return this.estilos;
+	}
+	public void setEstilos(final List<Estilo> estilos) {
+		this.estilos = estilos;
+	}
+
+
+	private Academia nombreComercial;
+
+
+	@NotNull
+	@Valid
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	public Academia getNombreComercial() {
+		return this.nombreComercial;
+	}
+	public void setNombreComercial(final Academia nombreComercial) {
+		this.nombreComercial = nombreComercial;
+	}
 
 }

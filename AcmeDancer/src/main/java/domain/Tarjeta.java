@@ -3,10 +3,14 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -75,5 +79,20 @@ public class Tarjeta extends DomainEntity {
 		this.cvv = cvv;
 	}
 
+
 	// Object interface -------------------------------------------------------
+
+	private Alumno id_alumno;
+
+
+	@NotNull
+	@Valid
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	public Alumno getId_alumno() {
+		return this.id_alumno;
+	}
+	public void setId_alumno(final Alumno id_alumno) {
+		this.id_alumno = id_alumno;
+	}
+
 }

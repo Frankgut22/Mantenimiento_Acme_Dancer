@@ -3,9 +3,13 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -59,47 +63,18 @@ public class Estilo extends DomainEntity {
 	}
 	// Object interface -------------------------------------------------------
 
-	@Override
-	public int hashCode() {
-		return this.getId();
+
+	private Curso titulo;
+
+
+	@NotNull
+	@Valid
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	public Curso getTitulo() {
+		return this.titulo;
 	}
 
-	@Override
-	public boolean equals(final Object other) {
-		boolean result;
-
-		if (this == other)
-			result = true;
-		else if (other == null)
-			result = false;
-		else if (other instanceof Integer)
-			result = (this.getId() == (Integer) other);
-		else if (!this.getClass().isInstance(other))
-			result = false;
-		else
-			result = (this.getId() == ((DomainEntity) other).getId());
-
-		return result;
-	}
-	@Override
-	public String toString() {
-		StringBuilder result;
-
-		result = new StringBuilder();
-		result.append(this.getClass().getName());
-		result.append("{");
-		result.append("id=");
-		result.append(this.getId());
-		result.append(", nombre:");
-		result.append(this.getNombre());
-		result.append(", descripcion:");
-		result.append(this.getDescripcion());
-		result.append(", imagen:");
-		result.append(this.getImagen());
-		result.append(", video:");
-		result.append(this.getVideo());
-		result.append("}");
-
-		return result.toString();
+	public void setTitulo(final Curso titulo) {
+		this.titulo = titulo;
 	}
 }

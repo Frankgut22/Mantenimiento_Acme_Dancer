@@ -3,14 +3,19 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+
+import security.UserAccount;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -32,7 +37,6 @@ public abstract class Usuario extends DomainEntity {
 	private String	email;
 
 
-	@GeneratedValue(strategy = GenerationType.TABLE)
 	@NotBlank
 	public String getNombre() {
 		return this.nombre;
@@ -62,6 +66,7 @@ public abstract class Usuario extends DomainEntity {
 		this.codigoPostal = codigoPostal;
 	}
 	@NotBlank
+	@Pattern(regexp = "^([+-]\\d+\\s+)?(\\([0-9]+\\)\\s+)?([\\d\\w\\s-]+)$")
 	public String getTelefono() {
 		return this.telefono;
 	}
@@ -77,4 +82,20 @@ public abstract class Usuario extends DomainEntity {
 	}
 
 	// Object interface -------------------------------------------------------
+
+
+	// Relationships ----------------------------------------------------------
+	private UserAccount userAccount;
+
+
+	@NotNull
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL, optional = false)
+	public UserAccount getUserAccount() {
+		return this.userAccount;
+	}
+
+	public void setUserAccount(final UserAccount userAccount) {
+		this.userAccount = userAccount;
+	}
 }

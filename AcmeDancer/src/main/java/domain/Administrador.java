@@ -18,8 +18,6 @@ public class Administrador extends Usuario {
 	}
 	// Identification ---------------------------------------------------------
 
-	//@GeneratedValue(strategy = GenerationType.TABLE)
-
 	// Object interface -------------------------------------------------------
 
 }
