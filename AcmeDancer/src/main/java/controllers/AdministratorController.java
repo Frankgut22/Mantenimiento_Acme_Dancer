@@ -1,8 +1,8 @@
 /*
  * AdministratorController.java
- * 
+ *
  * Copyright (C) 2018 Universidad de Sevilla
- * 
+ *
  * The use of this project is hereby constrained to the conditions of the
  * TDG Licence, a copy of which you may download from
  * http://www.tdg-seville.info/License.html
@@ -24,7 +24,7 @@ public class AdministratorController extends AbstractController {
 		super();
 	}
 
-	// Action-1 ---------------------------------------------------------------		
+	// Action-1 ---------------------------------------------------------------
 
 	@RequestMapping("/action-1")
 	public ModelAndView action1() {
@@ -42,6 +42,16 @@ public class AdministratorController extends AbstractController {
 		ModelAndView result;
 
 		result = new ModelAndView("administrator/action-2");
+
+		return result;
+	}
+	// Action-2 ---------------------------------------------------------------
+
+	@RequestMapping("/action-3")
+	public ModelAndView action3() {
+		ModelAndView result;
+
+		result = new ModelAndView("administrator/action-3");
 
 		return result;
 	}

@@ -24,6 +24,9 @@
 		<value>/views/welcome/messages</value>
 		
 		<value>/views/administrator/messages</value>
+		<value>/views/curso/messages</value>
+		<value>/views/tarjetas/messages</value>
+		<value>/views/academia/messages</value>
 		<value>/views/customer/messages</value>
 		<value>/views/profile/messages</value>
 	</util:list>

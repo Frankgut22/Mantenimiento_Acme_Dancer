@@ -1,0 +1,77 @@
+1. Crear el controlador (entrar al paquete controller), poner el nombre de la carpeta que creamos en view
+y poner luego el nombre del archivo JSP.
+
+
+@Controller
+@RequestMapping("/RUTA DE LA VISTA EN LA CARPETA VIEW")
+public class XXXXXXXController extends AbstractController
+
+hacer el constructor
+
+y luego hacemos el mapping del archivo JSP
+
+
+@RequestMapping("/NOMBRE DEL ARCHIVO JSP QUE QUEREMOS BUSCAR")
+	public ModelAndView action1() {
+		ModelAndView result;
+
+		result = new ModelAndView("RUTA DEL ARCHIVO JSP DENTRO DE LA CARPETA VIEW");
+
+		return result;
+	}
+
+
+
+2. Ir a src/main/resources/config y en security, poner la linea que corresponda a
+la vista que nos interesa, admin, costumer, etc.Hay que entrar en title y i18-l10n 
+y añadir las carpetas correspondientes
+
+
+i18:
+
+<value>/views/NOMBRE DE LA CARPETA EN VIEW/messages</value>
+
+tiles:
+
+<value>/views/NOMBRE DE LA CARPETA EN VIEW/tiles.xml</value>
+
+Security:
+
+<security:intercept-url pattern="/RUTA DEL ARCHIVO JSP.do" access="hasRole('ADMIN')" /> 
+							access="hasRole('CUSTOMER')
+							 access="isAuthenticated()" /> 
+							access="permitAll" /> 
+y el permiso ya depende de lo que necesitemos
+
+
+3. En src/main/webapp primero crear la carpeta en views y debe haber como minimo 3 
+archivos, el archivo jsp, message.propieties y title.xml
+
+jsp:
+
+<p><spring:message code="el nombre que vamos a poner en el achivo messages" /></p>
+
+messages:
+
+el nombre que recogerá el archivo jsp	= Esto es la pestaña de academias
+
+tiles.xml:
+
+<definition name="academia/listaAcademia" extends="master.page">	
+		<put-attribute name="title" value="Listado de academias" />
+		<put-attribute name="body" value="/views/academia/listaAcademia.jsp" />
+	</definition>
+
+
+
+4. por ultimo, en master page, en header, añadir la linea que hemos hecho y en messages, agregar lo que tengamos que agregar y listo
+
+master.page.academia					= Academia
+master.page.academia.listaAcademia		= Lista de academias
+
+<li><a class="fNiv"><spring:message	code="master.page.academia" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="academia/listaAcademia.do"><spring:message code="master.page.academia.listaAcademia" /></a></li>				
+				</ul>
+			</li>

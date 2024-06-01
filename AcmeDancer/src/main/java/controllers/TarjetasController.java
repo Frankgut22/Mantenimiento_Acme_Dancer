@@ -6,20 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/curso")
-public class CursoController extends AbstractController {
+@RequestMapping("/tarjetas")
+public class TarjetasController extends AbstractController {
 
-	public CursoController() {
+	public TarjetasController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	@RequestMapping("/listado")
+	@RequestMapping("/listaTarjetas")
 	public ModelAndView action1() {
 		ModelAndView result;
 
-		result = new ModelAndView("curso/listado");
+		result = new ModelAndView("tarjetas/listaTarjetas");
 
 		return result;
 	}
+
 }
