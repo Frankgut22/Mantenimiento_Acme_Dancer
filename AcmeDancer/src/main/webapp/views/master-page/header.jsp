@@ -70,7 +70,7 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a href="academia/crear.do">Crear Academia</a></li>
-			<li><a href="academia/crearAccount.do">Crear User</a></li>
+			<!-- <li><a href="academia/crearAccount.do">Crear User</a></li> -->
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
