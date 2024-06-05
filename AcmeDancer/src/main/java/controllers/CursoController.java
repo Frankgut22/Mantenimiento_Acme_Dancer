@@ -6,6 +6,8 @@ import java.util.Collection;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import domain.Academia;
 import domain.Curso;
-import security.LoginService;
 import security.UserAccount;
 import services.AcademiaService;
 import services.CursoService;
@@ -86,22 +88,38 @@ public class CursoController extends AbstractController {
 	}
 	@RequestMapping(value = "/crear", method = RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute("curso") final Curso curso, final BindingResult binding) {
-		ModelAndView result = null;
-		final UserAccount user = LoginService.getPrincipal();
+		ModelAndView result;
+		int id = 0;
+		try {
+			final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			final UserAccount user = (UserAccount) authentication.getPrincipal();
 
-		System.out.println("Controlador 2 de crear curso " + curso);
+			System.out.println("\n\nMuestra Id user " + user + "   " + user.getUsername());
+
+			final Academia aca = this.academiaService.buscaAcademiaIdUsuario(user.getId());
+			id = aca.getId();
+			System.out.println("\n\nMuestra Academia " + user + "   " + aca);
+		} catch (final Exception e) {
+			System.out.println("Se produjo un error al obtener el UserAccount: " + e.getMessage());
+		}
+
 		try {
 			if (binding.hasErrors())
-				result = new ModelAndView("curso/crear");
+				result = new ModelAndView("tutorial/nuevoTutorial");
 			else {
-
-				curso.setNombreComercial(this.academiaService.findById(user.getId()));
+				try {
+					//final UserAccount user = LoginService.getPrincipal();
+					//System.out.println("\n\n----------Id user " + user.getId());
+				} catch (final Exception e) {
+					System.out.println("Se produjo un error al obtener el UserAccount: " + e.getMessage());
+				}
+				curso.setNombreComercial(this.academiaService.findById(id));
 				this.cursoService.save(curso);
 				result = new ModelAndView("redirect:/curso/listado.do");
 			}
 		} catch (final Exception e) {
-			result = new ModelAndView("curso/curso");
-			result.addObject("error", "Ocurrió un error al guardar el curso. Por favor, inténtalo de nuevo.");
+			result = new ModelAndView("curso/crear");
+			result.addObject("error", "Ocurrió un error al guardar el tutorial. Por favor, inténtalo de nuevo.");
 			e.printStackTrace(); // Asegúrate de loggear la excepción para obtener más detalles.
 		}
 		return result;
