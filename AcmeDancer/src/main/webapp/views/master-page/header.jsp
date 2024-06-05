@@ -62,16 +62,21 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="customer/action-1.do"><spring:message code="master.page.customer.action.1" /></a></li>
-					<li><a href="customer/action-2.do"><spring:message code="master.page.customer.action.2" /></a></li>					
+					<li><a href="customer/action-2.do"><spring:message code="master.page.customer.action.2" /></a></li>
 				</ul>
 			</li>
+			<li><a href="curso/listado.do"><spring:message code="master.page.curso" /></a></li>	
+			<li><a href="academia/listaAcademia.do"><spring:message code="master.page.academia.listaAcademia" /></a></li>							
+			<li><a href="tutorial/listaTuto.do"><spring:message code="master.page.tutorial.listaTuto" /></a></li>								
+		
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a href="academia/crear.do">Crear Academia</a></li>
-			<li><a href="alumno/crear.do">Crear Alumno</a></li>
-			<!-- <li><a href="academia/crearAccount.do">Crear User</a></li> -->
+			<li><a href="curso/listado.do"><spring:message code="master.page.curso" /></a></li>	
+			<li><a href="academia/listaAcademia.do"><spring:message code="master.page.academia.listaAcademia" /></a></li>				
+						
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">

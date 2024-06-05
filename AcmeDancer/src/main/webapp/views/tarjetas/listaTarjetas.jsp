@@ -17,3 +17,18 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <p><spring:message code="tarjetas.listaTarjetas" /></p>
+
+
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+    name="tarjetas" id="row" requestURI="tarjetas/listaTarjetas.do">
+    
+    <!-- Attributes -->
+    <display:column property="nombreTitular"   />
+    <display:column property="numeroTarjeta"   />
+    <display:column property="tipoTarjeta"   />
+    <display:column property="mes"   />
+    <display:column property="anio"   />
+    <display:column property="cvv"   />
+<!-- Columna para el botón de eliminación -->
+
+</display:table>

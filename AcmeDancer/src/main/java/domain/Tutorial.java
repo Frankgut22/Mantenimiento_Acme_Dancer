@@ -54,8 +54,12 @@ public class Tutorial extends DomainEntity {
 		this.video = video;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Tutorial [titulo=" + this.titulo + ", fecha_Inicio=" + this.descripcion + ", video=" + this.video + ", nombreComercial=" + this.nombreComercial + "]";
+	}
 	// Object interface -------------------------------------------------------
+
 
 	private Academia nombreComercial;
 

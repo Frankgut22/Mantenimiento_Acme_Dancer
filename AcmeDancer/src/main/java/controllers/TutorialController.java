@@ -20,19 +20,15 @@ import domain.Tutorial;
 import security.UserAccount;
 import services.AcademiaService;
 import services.TutorialService;
-import services.UserAccountService;
 
 @Controller
 @RequestMapping("/tutorial")
 public class TutorialController extends AbstractController {
 
 	@Autowired
-	private TutorialService		tutorialService;
+	private TutorialService	tutorialService;
 	@Autowired
-	private AcademiaService		academiaService;
-
-	@Autowired
-	private UserAccountService	useraccountService;
+	private AcademiaService	academiaService;
 
 
 	public TutorialController() {
