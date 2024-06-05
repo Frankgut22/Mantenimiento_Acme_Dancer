@@ -59,6 +59,9 @@
 		<security:intercept-url access="isAnonymous()" pattern="/academia/crear.do"/>
 		<security:intercept-url access="isAnonymous()" pattern="/academia/crearAccount.do"/>
 		
+		<security:intercept-url access="isAnonymous()" pattern="/alumno/crear.do"/>
+		<security:intercept-url access="isAnonymous()" pattern="/alumno/crearAccount.do"/>
+		
 		<security:intercept-url pattern="/tarjetas/listaTarjetas.do" access="hasRole('ADMIN')" /> 
 		
 		
