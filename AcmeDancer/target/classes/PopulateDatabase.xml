@@ -54,6 +54,7 @@
 		</property>
 	</bean>
 
+
 	<!-- .......................User accounts................... -->
 
 
@@ -73,11 +74,11 @@
 	
 	<bean id="userAccount5" class="security.UserAccount">
 		<property name="username" value="Academia" />
-		<property name="password" value="033f7f6121501ae98285ad77f216d5e7" />
+		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
+					<property name="authority" value="ADMIN" />
 				</bean>
 			</list>
 		</property>
@@ -213,12 +214,12 @@
 		<property name="horaEjecucion" value="02/12/2024 12:30" />
 		<property name="capacidad" value="20" />
 		<property name="nombreComercial" ref="academia1" />
-		<property name="estilos">
+		<!--<property name="estilos">
 			<list>
 				<ref bean="estilo1" />
 				<ref bean="estilo2" />
 			</list> 
-		</property>
+		</property>-->
 	</bean>
 	<bean id="curso2" class="domain.Curso">
 		<property name="titulo" value="Merengue" />
@@ -228,12 +229,44 @@
 		<property name="horaEjecucion" value="02/12/2025 13:30" />
 		<property name="capacidad" value="40" />
 		<property name="nombreComercial" ref="academia1" />
-		<property name="estilos">
+		<!--<property name="estilos">
 			<list>
 				<ref bean="estilo1" />
 				<ref bean="estilo2" />
 			</list> 
-		</property>
+		</property>-->
+	</bean>
+	
+	<bean id="curso3" class="domain.Curso">
+		<property name="titulo" value="Merengue2" />
+		<property name="fecha_Inicio" value="02/10/2026" />
+		<property name="fecha_fin" value="02/12/2027" />
+		<property name="diaSemana" value="Martes" />
+		<property name="horaEjecucion" value="02/12/2025 13:30" />
+		<property name="capacidad" value="40" />
+		<property name="nombreComercial" ref="academia1" />
+		<!--<property name="estilos">
+			<list>
+				<ref bean="estilo1" />
+				<ref bean="estilo2" />
+			</list> 
+		</property>-->
+	</bean>
+	
+	<bean id="curso4" class="domain.Curso">
+		<property name="titulo" value="Merengue3" />
+		<property name="fecha_Inicio" value="02/10/2026" />
+		<property name="fecha_fin" value="02/12/2027" />
+		<property name="diaSemana" value="Martes" />
+		<property name="horaEjecucion" value="02/12/2025 13:30" />
+		<property name="capacidad" value="40" />
+		<property name="nombreComercial" ref="academia1" />
+		 <!--<property name="estilos">
+			<list>
+				<ref bean="estilo1" />
+				<ref bean="estilo2" />
+			</list> 
+		</property>-->
 	</bean>
 	<!-- .................Curso.................... -->
 
@@ -244,14 +277,14 @@
 		<property name="descripcion" value="Aprender samba" />
 		<property name="imagen" value="imagen" />
 		<property name="video" value="video" />
-		<property name="titulo" ref="curso1" />
+		<property name="curso" ref="curso1" />
 	</bean>
 	<bean id="estilo2" class="domain.Estilo">
 		<property name="nombre" value="Tango" />
 		<property name="descripcion" value="Aprender Tango" />
 		<property name="imagen" value="imagen" />
 		<property name="video" value="video" />
-		<property name="titulo" ref="curso1" />
+		<property name="curso" ref="curso1" />
 	</bean>
 	<!-- ..................Estilos...................... -->
 	

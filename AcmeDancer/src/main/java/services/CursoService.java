@@ -1,12 +1,11 @@
 
-package Services;
+package services;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 
 import domain.Curso;
 import repositories.CursoRepository;
@@ -29,39 +28,21 @@ public class CursoService {
 	// Simple CRUD methods ----------------------------------------------------
 
 	public Collection<Curso> findAll() {
-		Collection<Curso> result;
-
-		result = this.CursoRepository.findAll();
-
+		final Collection<Curso> result = this.CursoRepository.findAll();
+		System.out.println("Cursos encontrados: " + result.size());
 		return result;
 	}
 
-	public Curso findOne(final int cursoId) {
-		Assert.isTrue(cursoId != 0);
-
-		Curso result;
-
-		result = this.CursoRepository.findOne(cursoId);
-		Assert.notNull(result);
-
-		return result;
+	public void deleteById(final int id) {
+		this.CursoRepository.delete(id);
 	}
 
-	public Curso save(final Curso cur) {
-		Assert.notNull(cur);
-
-		Curso result;
-
-		result = this.CursoRepository.save(cur);
-
-		return result;
+	public Curso findById(final int id) {
+		return this.CursoRepository.findOne(id);
 	}
 
-	public void delete(final Curso cur) {
-		Assert.notNull(cur);
-		Assert.isTrue(cur.getId() != 0);
-		Assert.isTrue(this.CursoRepository.exists(cur.getId()));
-
-		this.CursoRepository.delete(cur);
+	public Curso save(final Curso curso) {
+		return this.CursoRepository.save(curso);
 	}
+
 }

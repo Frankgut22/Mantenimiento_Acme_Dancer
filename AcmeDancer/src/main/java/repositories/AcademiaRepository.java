@@ -12,4 +12,7 @@ public interface AcademiaRepository extends JpaRepository<Academia, Integer> {
 
 	@Query("select a from Academia a where a.id = ?1")
 	Academia findById(int userAccountId);
+
+	@Query("select a from Academia a where a.userAccount.id = ?1")
+	Academia buscaAcademiaIdUsuario(int id);
 }

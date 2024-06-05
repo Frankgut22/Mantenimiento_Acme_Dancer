@@ -16,17 +16,14 @@
        
 <tiles-definitions>
 
-	<definition name="curso/listado" extends="master.page">	
+	<definition name="tutorial/listaTuto" extends="master.page">	
 		<put-attribute name="title" value="Listado de cursos" />
-		<put-attribute name="body" value="/views/curso/listado.jsp" />
+		<put-attribute name="body" value="/views/tutorial/listaTuto.jsp" />
 	</definition>
-	<definition name="curso/editar" extends="master.page">	
+<definition name="tutorial/nuevoTutorial" extends="master.page">	
 		<put-attribute name="title" value="Listado de cursos" />
-		<put-attribute name="body" value="/views/curso/editar.jsp" />
+		<put-attribute name="body" value="/views/tutorial/nuevoTutorial.jsp" />
 	</definition>
-		<definition name="curso/crear" extends="master.page">	
-		<put-attribute name="title" value="Listado de cursos" />
-		<put-attribute name="body" value="/views/curso/crear.jsp" />
-	</definition>
+
 
 </tiles-definitions>

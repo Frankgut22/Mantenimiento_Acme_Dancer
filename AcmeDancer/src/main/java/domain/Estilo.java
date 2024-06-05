@@ -3,7 +3,6 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -64,17 +63,17 @@ public class Estilo extends DomainEntity {
 	// Object interface -------------------------------------------------------
 
 
-	private Curso titulo;
+	private Curso curso;
 
 
 	@NotNull
 	@Valid
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
-	public Curso getTitulo() {
-		return this.titulo;
+	@ManyToOne(optional = false)
+	public Curso getCurso() {
+		return this.curso;
 	}
 
-	public void setTitulo(final Curso titulo) {
-		this.titulo = titulo;
+	public void setCurso(final Curso curso) {
+		this.curso = curso;
 	}
 }

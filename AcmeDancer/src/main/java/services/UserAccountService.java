@@ -1,11 +1,12 @@
 
-package Services;
+package services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import domain.Academia;
 import domain.Usuario;
 import security.UserAccount;
 import security.UserAccountRepository;
@@ -33,13 +34,15 @@ public class UserAccountService {
 	public UserAccount findByUsuario(final Usuario user) {
 		Assert.notNull(user);
 
-		UserAccount result;
+		final UserAccount result = null;
 
-		result = this.userAccountRepository.findByUsuarioId(user.getId());
+		//result = this.userAccountRepository.findByUsuarioId(user.getId());
 
 		return result;
 	}
 
 	// Other business methods -------------------------------------------------
-
+	public Academia buscaAcademiaIdUsuario(final int id) {
+		return this.userAccountRepository.buscaAcademiaIdUsuario(id);
+	}
 }

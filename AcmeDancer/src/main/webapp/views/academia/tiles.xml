@@ -20,5 +20,12 @@
 		<put-attribute name="title" value="Listado de academias" />
 		<put-attribute name="body" value="/views/academia/listaAcademia.jsp" />
 	</definition>
-	
+	<definition extends="master.page" name="academia/crear">
+		<put-attribute name="title" value="Alta academia"/>
+		<put-attribute name="body" value="/views/academia/crear.jsp"/>
+	</definition>
+	<definition extends="master.page" name="academia/crearAccount">
+		<put-attribute name="title" value="Alta credenciales"/>
+		<put-attribute name="body" value="/views/academia/crearAccount.jsp"/>
+	</definition>
 </tiles-definitions>

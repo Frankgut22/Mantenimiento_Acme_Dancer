@@ -33,6 +33,8 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="curso/listado.do"><spring:message code="master.page.curso.listado" /></a></li>				
+					<li><a href="curso/create.do"><spring:message code="master.page.curso.crear" /></a></li>				
+				
 				</ul>
 			</li>
 			<li><a class="fNiv"><spring:message	code="master.page.academia" /></a>
@@ -45,6 +47,12 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="tarjetas/listaTarjetas.do"><spring:message code="master.page.tarjetas.listaTarjetas" /></a></li>				
+				</ul>
+			</li>
+			<li><a class="fNiv"><spring:message	code="master.page.tutorial" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="tutorial/listaTuto.do"><spring:message code="master.page.tutorial.listaTuto" /></a></li>				
 				</ul>
 			</li>
 		</security:authorize>
@@ -61,6 +69,8 @@
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
+			<li><a href="academia/crear.do">Crear Academia</a></li>
+			<li><a href="academia/crearAccount.do">Crear User</a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">

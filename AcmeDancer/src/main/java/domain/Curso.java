@@ -2,16 +2,11 @@
 package domain;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -43,8 +38,6 @@ public class Curso extends DomainEntity {
 	 * private TNivel nivel;
 	 */
 
-
-	@GeneratedValue(strategy = GenerationType.TABLE)
 
 	@NotBlank
 	public String getTitulo() {
@@ -88,29 +81,39 @@ public class Curso extends DomainEntity {
 	public void setCapacidad(final int capacidad) {
 		this.capacidad = capacidad;
 	}
+
+	@Override
+	public String toString() {
+		return "Curso [titulo=" + this.titulo + ", fecha_Inicio=" + this.fecha_Inicio + ", fecha_fin=" + this.fecha_fin + ", diaSemana=" + this.diaSemana + ", horaEjecucion=" + this.horaEjecucion + ", capacidad=" + this.capacidad + ", nombreComercial="
+			+ this.nombreComercial + "]";
+	}
+
+
 	// Object interface -------------------------------------------------------
-
-
-	private List<Estilo> estilos;
-
-
-	@NotNull
-	@Valid
-	@OneToMany(mappedBy = "titulo", cascade = CascadeType.ALL)
-	public List<Estilo> getEstilos() {
-		return this.estilos;
-	}
-	public void setEstilos(final List<Estilo> estilos) {
-		this.estilos = estilos;
-	}
-
-
+	/*
+	 *
+	 * private List<Estilo> estilos;
+	 *
+	 *
+	 * @NotNull
+	 *
+	 * @Valid
+	 *
+	 * @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
+	 * public List<Estilo> getEstilos() {
+	 * return this.estilos;
+	 * }
+	 * public void setEstilos(final List<Estilo> estilos) {
+	 * this.estilos = estilos;
+	 * }
+	 *
+	 */
 	private Academia nombreComercial;
 
 
 	@NotNull
 	@Valid
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@ManyToOne(optional = false)
 	public Academia getNombreComercial() {
 		return this.nombreComercial;
 	}

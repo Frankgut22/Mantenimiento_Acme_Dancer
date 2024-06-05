@@ -11,7 +11,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -46,7 +45,6 @@ public class Academia extends Usuario {
 	private List<Tutorial> titulos;
 
 
-	@NotNull
 	@Valid
 	@OneToMany(mappedBy = "nombreComercial", cascade = CascadeType.ALL)
 	public List<Tutorial> getTitulos() {
@@ -60,7 +58,6 @@ public class Academia extends Usuario {
 	private List<Curso> nombres;
 
 
-	@NotNull
 	@Valid
 	@OneToMany(mappedBy = "nombreComercial", cascade = CascadeType.ALL)
 	public List<Curso> getNombres() {

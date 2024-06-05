@@ -46,7 +46,19 @@
 		<security:intercept-url pattern="/administrator/action-3.do" access="hasRole('ADMIN')" /> 
 		
 		<security:intercept-url pattern="/curso/listado.do" access="hasRole('ADMIN')" /> 
+		<security:intercept-url pattern="/curso/create.do" access="hasRole('ADMIN')" /> 
+		<security:intercept-url pattern="/curso/editar.do" access="hasRole('ADMIN')" /> 
+		<security:intercept-url pattern="/curso/crear.do" access="hasRole('ADMIN')" /> 
+		
+		<security:intercept-url pattern="/tutorial/listaTuto.do" access="hasRole('ADMIN')" /> 
+		<security:intercept-url pattern="/tutorial/nuevoTutorial.do" access="hasRole('ADMIN')" /> 
+		<security:intercept-url pattern="/tutorial/editarTutorial.do" access="hasRole('ADMIN')" />
+		
+		
 		<security:intercept-url pattern="/academia/listaAcademia.do" access="hasRole('ADMIN')" /> 
+		<security:intercept-url access="isAnonymous()" pattern="/academia/crear.do"/>
+		<security:intercept-url access="isAnonymous()" pattern="/academia/crearAccount.do"/>
+		
 		<security:intercept-url pattern="/tarjetas/listaTarjetas.do" access="hasRole('ADMIN')" /> 
 		
 		
